@@ -1,0 +1,11 @@
+<h1>Comments</h1>
+<ul>
+  <li *ngFor="let comment of comments$">
+    <ul>
+        <li><strong>Post:</strong>{{comment.postId}}</li>
+        <li>{{comment.name}}</li>
+        <li>{{comment.email}}</li>
+        <li>{{comment.body}}</li>
+    </ul>
+  </li>
+</ul>

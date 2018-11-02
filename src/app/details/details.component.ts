@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../data.service';
+import {Observable} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-
-  constructor() { }
+  id$: number;
+  user$: Object;
+  constructor(private data: DataService, private route: ActivatedRoute) {
+    this.route.params.subscribe(param => this.id$ = param.id);
+   }
 
   ngOnInit() {
+    this.data.getUser(this.id$).subscribe(data => this.user$ = data);
   }
 
 }
